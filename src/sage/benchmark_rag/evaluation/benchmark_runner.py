@@ -113,7 +113,7 @@ class PipelineRunner(MapFunction):
 
     def _load_pipeline(self):
         """Dynamically load pipeline implementation."""
-        module_path = f"sage.benchmark.benchmark_rag.implementations.pipelines.{self.pipeline_name}"
+        module_path = f"sage.benchmark_rag.implementations.pipelines.{self.pipeline_name}"
 
         try:
             module = importlib.import_module(module_path)
