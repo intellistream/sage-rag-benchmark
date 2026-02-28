@@ -30,7 +30,7 @@ generator:
     model_name: "meta-llama/Llama-2-13b-chat-hf"
     seed: 42
 
-  vllm:
+  sagellm:
     api_key: ""
     method: "openai"
     model_name: "meta-llama/Llama-2-13b-chat-hf"

@@ -37,7 +37,7 @@ def pipeline_run():
         .map(ChromaRetriever, config["retriever"])
         .map(BGEReranker, config["reranker"])
         .map(QAPromptor, config["promptor"])
-        .map(OpenAIGenerator, config["generator"]["vllm"])
+        .map(OpenAIGenerator, config["generator"]["sagellm"])
         .sink(TerminalSink, config["sink"])
     )
 

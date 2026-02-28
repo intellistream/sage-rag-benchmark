@@ -31,7 +31,7 @@ def pipeline_run(config):
             env.from_source(FileSource, config["source"])
             .map(ChromaRetriever, config["retriever"])
             .map(QAPromptor, config["promptor"])
-            .map(OpenAIGenerator, config["generator"]["vllm"])
+            .map(OpenAIGenerator, config["generator"]["sagellm"])
         )
 
         # Create separate streams for True and False responses using filter

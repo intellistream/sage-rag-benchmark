@@ -29,7 +29,7 @@ def pipeline_run(config):
         .map(Wiki18FAISSRetriever, config["retriever"], enable_profile=enable_profile)
         .map(LongRefinerOperator, config["refiner"])
         .map(QAPromptor, config["promptor"], enable_profile=enable_profile)
-        .map(OpenAIGenerator, config["generator"]["vllm"], enable_profile=enable_profile)
+        .map(OpenAIGenerator, config["generator"]["sagellm"], enable_profile=enable_profile)
         .map(F1Evaluate, config["evaluate"])
         # .map(RecallEvaluate, config["evaluate"])
         # .map(RougeLEvaluate, config["evaluate"])

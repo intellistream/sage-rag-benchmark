@@ -25,7 +25,7 @@ def pipeline_run():
     # query_and_chunks_stream = query_stream.map(MilvusDenseRetriever, config["retriever"])  # 需要配置
     query_and_chunks_stream = query_stream  # 跳过检索步骤，因为需要复杂配置
     prompt_stream = query_and_chunks_stream.map(QAPromptor, config["promptor"])
-    response_stream = prompt_stream.map(OpenAIGenerator, config["generator"]["vllm"])
+    response_stream = prompt_stream.map(OpenAIGenerator, config["generator"]["sagellm"])
     response_stream.sink(TerminalSink, config["sink"])
     # 提交管道并运行
     env.submit()

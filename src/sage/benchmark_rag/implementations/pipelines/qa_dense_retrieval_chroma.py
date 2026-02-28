@@ -29,7 +29,7 @@ def pipeline_run(config: dict) -> None:
         env.from_batch(JSONLBatch, config["source"])
         .map(ChromaRetriever, config["retriever"])
         .map(QAPromptor, config["promptor"])
-        .map(OpenAIGenerator, config["generator"]["vllm"])
+        .map(OpenAIGenerator, config["generator"]["sagellm"])
         .sink(TerminalSink, config["sink"])
     )
 

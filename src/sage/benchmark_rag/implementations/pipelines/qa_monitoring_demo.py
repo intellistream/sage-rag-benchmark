@@ -51,7 +51,7 @@ def pipeline_run():
         env.from_source(JSONLBatch, config["source"])
         .map(ChromaRetriever, config["retriever"])
         .map(QAPromptor, config["promptor"])
-        .map(OpenAIGenerator, config["generator"]["vllm"])
+        .map(OpenAIGenerator, config["generator"]["sagellm"])
         .sink(TerminalSink, config["sink"])
     )
 

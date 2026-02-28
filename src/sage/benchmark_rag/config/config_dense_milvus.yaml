@@ -50,7 +50,7 @@ promptor:
     请提供准确、有用的回答：
 
 generator:
-  vllm:
+  sagellm:
     api_key: ""
     method: "openai"
     model_name: "meta-llama/Llama-2-7b-chat-hf"

@@ -141,7 +141,7 @@ def pipeline_run(config):
         SafeBiologyRetriever, config["retriever"]
     )  # 使用BiologyRetriever
     prompt_stream = query_and_chunks_stream.map(QAPromptor, config["promptor"])
-    response_stream = prompt_stream.map(OpenAIGenerator, config["generator"]["vllm"])
+    response_stream = prompt_stream.map(OpenAIGenerator, config["generator"]["sagellm"])
     response_stream.sink(FileSink, config["sink"])
     # 提交管道并运行
     env.submit()

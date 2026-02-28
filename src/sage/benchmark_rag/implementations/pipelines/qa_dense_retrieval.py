@@ -28,7 +28,7 @@ def pipeline_run():
         env.from_source(FileSource, config["source"])  # 处理且处理一整个file 一次。
         # .map(MilvusDenseRetriever, config["retriever"])  # 需要配置文件
         .map(QAPromptor, config["promptor"])
-        .map(OpenAIGenerator, config["generator"]["vllm"])
+        .map(OpenAIGenerator, config["generator"]["sagellm"])
         .sink(TerminalSink, config["sink"])  # TM (JVM) --> 会打印在某一台机器的console里
     )
 
