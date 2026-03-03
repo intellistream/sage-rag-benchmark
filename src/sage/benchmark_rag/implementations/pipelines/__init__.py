@@ -9,7 +9,7 @@ Retrieval Methods:
 
 Vector Databases:
 - Milvus (dense, sparse, hybrid)
-- ChromaDB (local vector database)
+- SageVDB / Milvus (vector database backends)
 - FAISS (efficient similarity search)
 
 Advanced Features:

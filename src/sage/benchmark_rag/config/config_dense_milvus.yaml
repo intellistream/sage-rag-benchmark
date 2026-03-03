@@ -6,7 +6,7 @@ source:
 
 retriever:
   preload_knowledge_file:
-  - "./packages/sage-benchmark/src/sage/data/qa/qa_knowledge_chromaDB.txt"
+  - "./packages/sage-benchmark/src/sage/data/qa/qa_knowledge_base.txt"
   - "./packages/sage-benchmark/src/sage/data/qa/qa_knowledge_rag.md"
 
   # 通用参数
@@ -16,7 +16,7 @@ retriever:
   # 嵌入模型配置（用于对文档和查询编码）
   embedding:
     method: "hf"
-    model: "sentence-transformers/all-MiniLM-L6-v2"
+    model: "BAAI/bge-small-zh-v1.5"
 
   # Milvus 后端（稠密检索）
   milvus_dense:

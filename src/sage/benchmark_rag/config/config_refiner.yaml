@@ -15,7 +15,7 @@ source:
   hf_split: "dev"
 
 retriever:
-  # 检索器类型选择: 'chroma' 或 'wiki18_faiss'
+  # 检索器类型选择: 'wiki18_faiss'
   type: "wiki18_faiss"  # 使用Wiki18 FAISS检索器
 
   # 通用配置

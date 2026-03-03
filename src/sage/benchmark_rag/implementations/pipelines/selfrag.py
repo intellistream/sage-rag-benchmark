@@ -14,7 +14,6 @@ import os
 from typing import Any
 
 from openai import OpenAI
-
 from sage.common.core import MapFunction
 from sage.kernel.api.local_environment import LocalEnvironment
 from sage.libs.foundation.io.sink import FileSink
@@ -114,7 +113,9 @@ class SelfRAGGenerator(MapFunction):
         self.temperature = config.get("temperature", 0)
         self.max_tokens = config.get("max_tokens", 100)
 
-        base_url = config.get("base_url") or os.getenv("SAGELLM_BASE_URL", "http://localhost:8901/v1")
+        base_url = config.get("base_url") or os.getenv(
+            "SAGELLM_BASE_URL", "http://localhost:8901/v1"
+        )
         api_key = config.get("api_key") or os.getenv("SAGELLM_API_KEY", "EMPTY")
         self.client = OpenAI(base_url=base_url, api_key=api_key)
 
