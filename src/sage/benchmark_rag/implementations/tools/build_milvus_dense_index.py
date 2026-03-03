@@ -50,7 +50,7 @@ def load_knowledge_to_milvus(config):
         print(f"✓ 数据库信息: {milvus_backend.get_collection_info()}")
 
         # 测试检索
-        text_query = "什么是ChromaDB？"
+        text_query = "什么是向量数据库？"
         results = milvus_backend.execute(text_query)
         print(f"检索结果: {results}")
 

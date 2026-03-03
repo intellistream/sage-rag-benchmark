@@ -15,7 +15,7 @@ def load_knowledge_to_milvus(config):
     persistence_path = config.get("milvus_dense").get("persistence_path")
     collection_name = config.get("milvus_dense").get("collection_name")
 
-    print("=== 预加载知识库到 ChromaDB ===")
+    print("=== 预加载知识库到 Milvus ===")
     print(f"文件: {knowledge_file} | DB: {persistence_path} | 集合: {collection_name}")
 
     loader = TextLoader(knowledge_file)
@@ -31,7 +31,7 @@ def load_knowledge_to_milvus(config):
     milvus_backend.add_documents(chunks)
     print(f"✓ 已添加 {len(chunks)} 个文本块")
     print(f"✓ 数据库信息: {milvus_backend.get_collection_info()}")
-    text_query = "什么是ChromaDB？"
+    text_query = "什么是向量数据库？"
     results = milvus_backend.execute(text_query)
     print(f"检索结果: {results}")
     return True
