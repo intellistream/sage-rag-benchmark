@@ -1,0 +1,63 @@
+Metadata-Version: 2.4
+Name: isage-rag-benchmark
+Version: 0.1.0.0
+Summary: RAG benchmarking suite for the SAGE ecosystem
+Author-email: IntelliStream Team <shuhao_zhang@hust.edu.cn>
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/intellistream/sage-rag-benchmark
+Project-URL: Documentation, https://github.com/intellistream/sage-rag-benchmark#readme
+Project-URL: Repository, https://github.com/intellistream/sage-rag-benchmark
+Project-URL: Issues, https://github.com/intellistream/sage-rag-benchmark/issues
+Keywords: sage,benchmark,rag,retrieval-augmented-generation,evaluation,intellistream
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: isage-common
+Requires-Dist: isage-kernel
+Requires-Dist: isage-middleware>=0.2.4.0
+Requires-Dist: isage-libs
+Requires-Dist: sentence-transformers<4.0.0,>=3.1.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: chromadb>=1.0.20
+Requires-Dist: pymilvus[model]>=2.4.0
+Requires-Dist: faiss-cpu<2.0.0,>=1.7.0
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: numpy<2.3.0,>=1.26.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: ruff==0.14.6; extra == "dev"
+Requires-Dist: pre-commit>=3.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: types-PyYAML>=6.0.0; extra == "dev"
+Dynamic: license-file
+
+# SAGE RAG Benchmark
+
+RAG benchmarking suite for the SAGE ecosystem. This repository provides
+pipelines, evaluation utilities, and configuration templates for evaluating
+retrieval-augmented generation systems.
+
+## Install
+
+```bash
+pip install isage-rag-benchmark
+```
+
+## Quick Start
+
+See the configs under `src/sage/benchmark_rag/config/` and the implementations
+in `src/sage/benchmark_rag/implementations/`.
+
+## Repository
+
+- GitHub: https://github.com/intellistream/sage-rag-benchmark
