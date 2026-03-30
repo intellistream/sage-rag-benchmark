@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "isage-rag-benchmark"
-dynamic = ["version"]
+version = "0.1.0.2"
 description = "RAG benchmarking suite for the SAGE ecosystem"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -38,9 +38,8 @@ dependencies = [
     "isage-kernel",
     "isage-middleware>=0.2.4.0",
     "isage-libs",
-    "sentence-transformers>=3.1.0,<4.0.0",
+    "isage-vdb>=0.2.0.0",
     "pyyaml>=6.0",
-    "chromadb>=1.0.20",
     "pymilvus[model]>=2.4.0",
     "faiss-cpu>=1.7.0,<2.0.0",
     "pandas>=2.0.0",
@@ -50,7 +49,10 @@ dependencies = [
 license = "MIT"
 
 [project.optional-dependencies]
+full = []
 dev = [
+    # dev includes [full] — no need for a separate extras install
+    "isage-rag-benchmark[full]",
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
     "black>=23.0.0",

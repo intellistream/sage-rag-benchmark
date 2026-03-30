@@ -10,8 +10,10 @@ This implementation uses the Self-RAG dataset format where each item contains:
 - ctxs: Pre-retrieved documents with title and text
 """
 
+import os
 from typing import Any
 
+from openai import OpenAI
 from sage.common.core import MapFunction
 from sage.kernel.api.local_environment import LocalEnvironment
 from sage.libs.foundation.io.sink import FileSink
@@ -101,32 +103,33 @@ class SelfRAGPromptor(MapFunction):
 
 class SelfRAGGenerator(MapFunction):
     """
-    Self-RAG Generator - generates answers using VLLM.
+    Self-RAG Generator - generates answers via OpenAI-compatible endpoint.
 
-    Uses vLLM for efficient batch inference.
+    默认连接本地 sageLLM 网关，也可通过 base_url/api_key 覆盖。
     """
 
     def __init__(self, config: dict):
         self.model_name = config.get("model_name", "mistralai/Mistral-7B-Instruct-v0.1")
+        self.temperature = config.get("temperature", 0)
+        self.max_tokens = config.get("max_tokens", 100)
 
-        from vllm import LLM, SamplingParams
-
-        self.llm = LLM(
-            model=self.model_name,
-            gpu_memory_utilization=config.get("gpu_memory_utilization", 0.8),
+        base_url = config.get("base_url") or os.getenv(
+            "SAGELLM_BASE_URL", "http://localhost:8901/v1"
         )
-        self.sampling_params = SamplingParams(
-            temperature=config.get("temperature", 0),
-            max_tokens=config.get("max_tokens", 100),
-        )
+        api_key = config.get("api_key") or os.getenv("SAGELLM_API_KEY", "EMPTY")
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
 
     def execute(self, item: dict[str, Any]) -> dict[str, Any]:
         """Generate answer for the question."""
         prompt = item["prompt"]
 
-        # Generate using vLLM
-        outputs = self.llm.generate([prompt], self.sampling_params)
-        response = outputs[0].outputs[0].text
+        completion = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=self.temperature,
+            max_tokens=self.max_tokens,
+        )
+        response = completion.choices[0].message.content or ""
 
         # Post-process output
         response = self._postprocess(response)

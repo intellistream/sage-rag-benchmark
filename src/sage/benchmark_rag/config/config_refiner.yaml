@@ -15,7 +15,7 @@ source:
   hf_split: "dev"
 
 retriever:
-  # 检索器类型选择: 'chroma' 或 'wiki18_faiss'
+  # 检索器类型选择: 'wiki18_faiss'
   type: "wiki18_faiss"  # 使用Wiki18 FAISS检索器
 
   # 通用配置
@@ -39,7 +39,7 @@ generator:
     model_name: "meta-llama/Llama-2-13b-chat-hf"
     seed: 42
 
-  vllm:
+  sagellm:
     api_key: "token-abc123"
     method: "openai"
     model_name: "meta-llama/Llama-3.1-8B-Instruct"
@@ -68,7 +68,7 @@ refiner:
   score_model_path: "BAAI/bge-reranker-v2-m3"
   max_model_len: 25000
   budget: 2048
-  gpu_device: 0  # vLLM使用GPU 1
+  gpu_device: 0  # sageLLM 使用 GPU 1
   gpu_memory_utilization: 0.5
 
 evaluate:
